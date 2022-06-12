@@ -59,7 +59,7 @@ const getSalario = (id) => {
 };
 
 //  //NOTA. TODAS LAS PROMESAS TIENEN QUE SER CONTROLADOS.
-const id = 3;
+const id = 10;
 console.log("Example 1************************************");
 //  //Aqui devolvemos el empleado y el salario por separado.
 //  //Mandamos a llamar las promesas.
@@ -78,14 +78,32 @@ console.log("Example 2************************************");
 //  //De esta forma logramos resolverlo, PERO si nos damos cuenta
 //  //  dentro de un then ejecutamos otra promesa y eso es dificil
 //  //  de mantener con el tiempo.
+// getEmpleado(id)
+//     .then( empleado => {
+
+//         getSalario(id)
+//             .then( salario => {
+//                 console.log('El empleado:', empleado, 'tiene un salario de: ', salario);
+
+//             })
+//             .catch(err => console.log(err));
+//     })
+//     .catch(err => console.log(err));
+
+console.log("Example 3************************************");
+//  //Ejercicio del video 24 - Promesas en cadena.
+//  //Lo que se quiere devolver es el empleado junto con su salario.
+
+let nombre;
 getEmpleado(id)
-    .then( empleado => {
-
-        getSalario(id)
-            .then( salario => {
-                console.log('El empleado:', empleado, 'tiene un salario de: ', salario);
-
-            })
-            .catch(err => console.log(err));
+    .then(empleado => {
+        nombre = empleado;
+        //  //como esto devuelve una promesa, no necesito
+        //  //  ponerle el .then al getSalario si no que 
+        //  //  el then los ponemos en cadena eso significa
+        //  //  que el siguiente then pertenece al del 
+        //  //  getSalario.
+        return getSalario(id);
     })
+    .then( salario => console.log('El empleado ', nombre, 'tiene un salario de: ', salario))
     .catch(err => console.log(err));

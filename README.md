@@ -207,8 +207,28 @@ getEmpleado(id)
 de casos**
 
 ## Video 24 Promesas en cadena
+Tomando como base las promesas construidas en el 
+video 23 vamos a resolver el ultimo ejercicio del 
+[video 23](#video-23-promesas) de una mejor manera.
 
+```
+//  //Ejercicio del video 24 - Promesas en cadena.
+//  //Lo que se quiere devolver es el empleado junto con su salario.
 
+let nombre;
+getEmpleado(id)
+    .then(empleado => {
+        nombre = empleado;
+        //  //como esto devuelve una promesa, no necesito
+        //  //  ponerle el .then al getSalario si no que 
+        //  //  el then los ponemos en cadena eso significa
+        //  //  que el siguiente then pertenece al del 
+        //  //  getSalario.
+        return getSalario(id);
+    })
+    .then( salario => console.log('El empleado ', nombre, 'tiene un salario de: ', salario))
+    .catch(err => console.log(err));
+```
 
 
 
