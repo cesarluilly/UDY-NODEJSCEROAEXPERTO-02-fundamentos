@@ -56,9 +56,38 @@ const sumarFlecha2 = (a, b = 5) => a + b ;
 console.log(sumarFlecha2(5));
 ```
 
+## Video 20 Callbacks.
 
+Un termino que es dificil de comprender, y es que un callback 
+no es mas que una funcion que se va a ejecutar despues de un cierto
+punto del tiempo.
 
+La cosa es que los callbacks no son mas que una funcion que se manda
+como argumento a otra funcion.
 
+```
+const getUsuarioByID = (id1, id2, callback) => {
+    //  //Aqui hacemos una simulacion de que esta es informacion
+    //  // que se manda a la DB.
+    const user = {
+        //  //Nota. Aqui decimos que el id1 que se recibe de parametro
+        //  // se va assignar al id1 del objeto
+        id1,
+        id2 : id2,
+        nombre : 'Cesar'
+    }
+
+    //  //Ahora vamos a hacer una simulacion con setTimeOut como si estuvieramos
+    //  // agregando elementos a la DB.
+    setTimeout(() => {
+        callback(user)
+    }, 3000)
+};
+
+getUsuarioByID(10, 11, (usuario) => {
+    console.log(usuario);
+});
+```
 
 
 
