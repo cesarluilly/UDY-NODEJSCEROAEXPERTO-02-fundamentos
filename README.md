@@ -39,7 +39,7 @@ Los templates se logran hacer con los simbolos ``` `cadena o ${variable}` ``` y 
 La desescruturacion es importante para ahorrar codigo para acceder a todas las variables de una funcion, 
 objeto, etc. y de esa forma es mas entendible y rapido de codificar.
 
-```
+```js
 const deadpool = {
     nombre: 'Wade',
     apellido: 'Winston',
@@ -58,7 +58,7 @@ console.log(nombre2, apellido, poder, edad);
 ### [Ver archivo flecha.js](./flecha.js)
 
 Las funciones de flecha son indispensables, un ejemplo seria el siguiente.
-```
+```js
 //  //Funcion de flecha.
 const sumarFlecha = (a, b = 5) => {
     return a + b;
@@ -81,7 +81,7 @@ punto del tiempo.
 La cosa es que los callbacks no son mas que una funcion que se manda
 como argumento a otra funcion.
 
-```
+```js
 const getUsuarioByID = (id1, id2, callback) => {
     //  //Aqui hacemos una simulacion de que esta es informacion
     //  // que se manda a la DB.
@@ -110,8 +110,7 @@ getUsuarioByID(10, 11, (usuario) => {
 Asi como se plantea la solucion, asi hay muchos lugares en nodejs
 que utilizan esta misma forma a contruir los callbacks.
 
-```
-
+```js
 console.log('Example 3************************************');
 //  //SOLUCION AL EJEMPLO 2(anterior)
 //  //NOTA. De esta forma hay muchos ejemplos de como funcionan alguns callbacks 
@@ -150,8 +149,6 @@ console.log(getEmpleado(10, (err, empleado) => {
     console.log('Empleado existe');
     console.log(empleado);
 }));
-
-
 ```
 
 ## Video 22 Callback Hell
@@ -160,7 +157,7 @@ Un callback hell es cuando llamamos a callbacks dentro de otro callback,
 es algo que hay que evitarlo, porque si lo hacemos nos puede complicar el codigo
 despues.
 
-```
+```js
 //  //NOTA. SI NOSOTROS PROBAMOS CON EL ID 3 (que si hay un empleado pero no tiene salario)
 //  // probamos, entonces no nos va a dar el resultado, al menos de que tiene un nombre.
 //  //PERO AQUI EL CALLBACK HELL es cuando llamamos callback dentro de otro callback, y eso se vuelve 
@@ -191,7 +188,7 @@ Las promesas en javascript son algo que nos ayuda muchisimo a trabajar con
 el `callback hell` pero si no lo usamos bien, puede resultar incluso mas confuso
 que el propio callback hell.
 
-```
+```js
 console.log("Example 2************************************");
 //  //Aqui vamos a devolver el empleado junto con su salario
 //  //  para resolver la problematica que teniamos con callback hell
@@ -220,7 +217,7 @@ Tomando como base las promesas construidas en el
 video 23 vamos a resolver el ultimo ejercicio del 
 [video 23](#video-23-promesas) de una mejor manera.
 
-```
+```js
 //  //Ejercicio del video 24 - Promesas en cadena.
 //  //Lo que se quiere devolver es el empleado junto con su salario.
 
@@ -256,7 +253,8 @@ estar dentro de una funcion o metodo **asincrono**</orange>
 Cuando al invocar un metodo asincrono y le ponemos punto para 
 seleccionar `then` para que la funcion la conviertamos en
 una promesa devuelta.
-```
+
+```js
 console.log("Example 1************************************");
 //  //Invocacion de una funcion asincrona para que devuelva 
 //  //  una promesa.
@@ -269,7 +267,8 @@ getInfoUsuario().then(msg => console.log(msg));
 
 ***
 Ahora vamos a resolver el ejercicio del [video 24](#video-24-promesas-en-cadena) con async await.
-```
+
+```js
 console.log("Example 2************************************");
 
 const id = 1;
@@ -300,25 +299,3 @@ getInfoUsuario(3)
         console.log(err)
     });
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
