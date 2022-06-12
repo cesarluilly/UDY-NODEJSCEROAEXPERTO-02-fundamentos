@@ -1,6 +1,16 @@
 # UDY-NODEJSCEROAEXPERTO-02-fundamentos
 
-## Video 16 Const vs Let vs Var
+<style>
+    red { color: red; }
+    yellow { color: yellow }
+    blue { color: blue}
+</style>
+
+<!-- La forma de utilizar estilos es
+    <red>Texto algo</red>
+ -->
+
+## Video 16 Const vs Let vs Var>
 
 * `var` no es recomendable ya que este trata a nivel de context 
 incluso si se declara dentro de un metodo, ya que lo estara 
@@ -138,6 +148,65 @@ console.log(getEmpleado(10, (err, empleado) => {
 
 ```
 
+## Video 22 Callback Hell
+Un callback hell es cuando llamamos a callbacks dentro de otro callback, 
+es algo que hay que evitarlo, porque si lo hacemos nos puede complicar el codigo
+despues.
+
+```
+//  //NOTA. SI NOSOTROS PROBAMOS CON EL ID 3 (que si hay un empleado pero no tiene salario)
+//  // probamos, entonces no nos va a dar el resultado, al menos de que tiene un nombre.
+//  //PERO AQUI EL CALLBACK HELL es cuando llamamos callback dentro de otro callback, y eso se vuelve 
+//  // complicado despues, entonces por eso HAY QUE EVITARLO.
+const id = 3;
+getEmpleadoYSalario(id, (err, empleado) => {
+    //  //Si el error existe.
+    if ( err ) {
+        return console.log(err);
+    }
+
+    getSalario(id, (error, salario) => {
+        if (
+            //  //hay algo en error o existe.
+            error
+        ) {
+            return console.log(error); 
+        } 
+        
+        console.log('El empleado:', empleado, 'tiene un salario de: ', salario);
+    });
+});
+```
+
+## Video 23 Promesas
+Las promesas en javascript son algo que nos ayuda muchisimo a trabajar con
+el `callback hell` pero si no lo usamos bien, puede resultar incluso mas confuso
+que el propio callback hell.
+
+```
+console.log("Example 2************************************");
+//  //Aqui vamos a devolver el empleado junto con su salario
+//  //  para resolver la problematica que teniamos con callback hell
+//  //  (del archivo callbackhell.js).
+//  //De esta forma logramos resolverlo, PERO si nos damos cuenta
+//  //  dentro de un then ejecutamos otra promesa y eso es dificil
+//  //  de mantener con el tiempo.
+getEmpleado(id)
+    .then( empleado => {
+
+        getSalario(id)
+            .then( salario => {
+                console.log('El empleado:', empleado, 'tiene un salario de: ', salario);
+
+            })
+            .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+```
+**El el siguiente video, se mostrara la solucion para este tipo
+de casos**
+
+## Video 24 Promesas en cadena
 
 
 
